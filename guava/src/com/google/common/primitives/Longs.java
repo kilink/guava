@@ -30,7 +30,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
+import java.util.PrimitiveIterator;
 import java.util.RandomAccess;
 import java.util.Spliterator;
 import java.util.Spliterators;
@@ -746,8 +748,13 @@ public final class Longs {
     }
 
     @Override
+    public PrimitiveIterator.OfLong iterator() {
+      return Spliterators.iterator(spliterator());
+    }
+
+    @Override
     public Spliterator.OfLong spliterator() {
-      return Spliterators.spliterator(array, start, end, 0);
+      return Spliterators.spliterator(array, start, end, Spliterator.ORDERED);
     }
 
     @Override
