@@ -613,6 +613,13 @@ public class ImmutableBiMapTest extends TestCase {
     assertThat(keys).containsExactly("one", "two", "three", "four").inOrder();
   }
 
+  public void testKeySetSpliteratorCharacteristics() {
+    ImmutableBiMap<String, Integer> bimap =
+        ImmutableBiMap.copyOf(ImmutableMap.of("one", 1, "two", 2, "three", 3, "four", 4));
+    Set<String> keys = bimap.keySet();
+    assertThat(keys.spliterator().characteristics()).isEqualTo(ImmutableSet.SPLITERATOR_CHARACTERISTICS);
+  }
+
   public void testValues() {
     ImmutableBiMap<String, Integer> bimap =
         ImmutableBiMap.copyOf(ImmutableMap.of("one", 1, "two", 2, "three", 3, "four", 4));

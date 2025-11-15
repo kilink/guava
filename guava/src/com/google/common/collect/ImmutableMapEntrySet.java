@@ -26,6 +26,7 @@ import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.Map.Entry;
 import java.util.Spliterator;
+import java.util.Spliterators;
 import java.util.function.Consumer;
 import org.jspecify.annotations.Nullable;
 
@@ -68,7 +69,7 @@ abstract class ImmutableMapEntrySet<K, V> extends ImmutableSet.CachingAsList<Ent
 
     @Override
     public Spliterator<Entry<K, V>> spliterator() {
-      return entries.spliterator();
+      return Spliterators.spliterator(entries, ImmutableSet.SPLITERATOR_CHARACTERISTICS);
     }
 
     @Override
