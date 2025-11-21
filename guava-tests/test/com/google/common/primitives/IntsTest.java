@@ -35,6 +35,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
+import java.util.Spliterator;
+
 import junit.framework.TestCase;
 import org.jspecify.annotations.NullMarked;
 import org.jspecify.annotations.Nullable;
@@ -581,6 +583,12 @@ public class IntsTest extends TestCase {
   @SuppressWarnings("EmptyList")
   public void testAsListEmpty() {
     assertThat(Ints.asList(EMPTY)).isSameInstanceAs(Collections.emptyList());
+  }
+
+  public void testAsList_spliterator_characteristics() {
+    int expectedCharacteristics = Spliterator.ORDERED | Spliterator.SIZED | Spliterator.SUBSIZED;
+    Spliterator<Integer> spliterator = Ints.asList(1, 2, 3).spliterator();
+    assertThat(spliterator.characteristics()).isEqualTo(expectedCharacteristics);
   }
 
   @J2ktIncompatible

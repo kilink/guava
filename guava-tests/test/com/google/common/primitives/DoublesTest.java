@@ -36,6 +36,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Spliterator;
 import java.util.regex.Pattern;
 import junit.framework.TestCase;
 import org.jspecify.annotations.NullMarked;
@@ -590,6 +591,12 @@ public class DoublesTest extends TestCase {
   @SuppressWarnings("EmptyList")
   public void testAsListEmpty() {
     assertThat(Doubles.asList(EMPTY)).isSameInstanceAs(Collections.emptyList());
+  }
+
+  public void testAsList_spliterator_characteristics() {
+    int expectedCharacteristics = Spliterator.ORDERED | Spliterator.SIZED | Spliterator.SUBSIZED;
+    Spliterator<Double> spliterator = Doubles.asList(1.0, 2.0, 3.0).spliterator();
+    assertThat(spliterator.characteristics()).isEqualTo(expectedCharacteristics);
   }
 
   /**

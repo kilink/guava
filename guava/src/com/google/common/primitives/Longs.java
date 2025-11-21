@@ -747,7 +747,7 @@ public final class Longs {
 
     @Override
     public Spliterator.OfLong spliterator() {
-      return Spliterators.spliterator(array, start, end, 0);
+      return Spliterators.spliterator(array, start, end, Spliterator.ORDERED);
     }
 
     @Override

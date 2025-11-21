@@ -613,7 +613,7 @@ public final class Doubles extends DoublesMethodsForWeb {
 
     @Override
     public Spliterator.OfDouble spliterator() {
-      return Spliterators.spliterator(array, start, end, 0);
+      return Spliterators.spliterator(array, start, end, Spliterator.ORDERED);
     }
 
     @Override

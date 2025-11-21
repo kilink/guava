@@ -695,7 +695,7 @@ public final class Ints extends IntsMethodsForWeb {
 
     @Override
     public Spliterator.OfInt spliterator() {
-      return Spliterators.spliterator(array, start, end, 0);
+      return Spliterators.spliterator(array, start, end, Spliterator.ORDERED);
     }
 
     @Override
